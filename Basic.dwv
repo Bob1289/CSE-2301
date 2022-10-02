@@ -1,0 +1,36 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+
+entity Basic is 
+
+ port(
+		D	: in	std_logic_vector(3 downto 0);
+		INPUT	: in	std_logic;
+		Q	: out	std_logic_vector(3 downto 0);
+		LD	: in	std_logic;
+		CLK	: in	std_logic
+	);
+
+end Basic;
+
+
+architecture arch1 of Basic is
+
+begin
+
+  process(CLK)
+  begin
+  	if CLK'event and CLK = '1' then
+  		if LD = '1' then
+  			Q <= D;
+  		else
+  			Q(3) <= input;
+  			Q(2) <= Q(3);
+  			Q(1) <= Q(2);
+  			Q(0) <= Q(1);
+  		end if;
+  	end if;
+  	end process;
+
+end arch1;
